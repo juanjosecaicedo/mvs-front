@@ -19,7 +19,10 @@
         </div>
       </section>
       <div class="border-teal bg-white p-8 border-t-12 mb-6 rounded-lg shadow-lg">
-        <div class="coc">
+        
+        <div class="text-center">
+          <!-- <b-icon icon="person-fill" font-scale="4"></b-icon> -->
+          <b-avatar size="72px"></b-avatar>
         </div>
         <form v-on:submit.prevent="enviar($event)">
           <b-form-group>
