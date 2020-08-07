@@ -31,7 +31,7 @@
             </b-input-group>
           </div>
         </div>
-        <b-card-body>
+        <!-- <b-card-body>
           <b-table :fields="fields" :filter="filter" :hover="true" :striped="true" :bordered="true" :small="true" :items="personas" responsive="sm" :busy="loading">
             <template v-slot:table-busy>
               <div class="text-center text-primary my-2">
@@ -44,7 +44,7 @@
             </template>
             <template slot="identificacion" slot-scope="data">{{data.item.cedula}}</template>
           </b-table>
-        </b-card-body>
+        </b-card-body> -->
       </b-card>
     </div>
 
@@ -328,6 +328,26 @@ export default {
         this.personas = response.data;
         this.loading = false;
       });
+    },
+    registrar() {
+      axios
+        .post(keys.baseUrl+"registar-persona", this.form)
+        .then(response => {
+          // eslint-disable-next-line no-console
+          console.log(response);
+          return response.data;
+        })
+        .then(datos => {
+          if (!datos.error) {
+            this.success_store = true;
+            this.msg = datos.msg;
+            document.getElementById("form-store").reset();
+            this.mostrarPersonas();
+          } else {
+            this.success_store = false;
+            this.msg = datos.msg;
+          }
+        });
     },
     eliminar: function (id) {
       var confirmar = confirm("¿Está seguro de realizar esta acción?");
