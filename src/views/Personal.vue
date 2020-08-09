@@ -1,11 +1,13 @@
 <template>
   <div>
     <NavBar />
-    <div class="container mt-4">
+    <div class="my-4 mx-4 shadow-md">
       <b-card header-tag="header" footer-tag="footer">
-        <div slot="header">
-          <i class="icon-users"></i>
-          <b>Registro de personal</b>
+        <div slot="header" class="d-flex justify-content-between items-center">
+          <div>
+            <i class="icon-users mr-2"></i>
+            <b>Registro de personal</b>
+          </div>
           <div class="card-header-actions">
             <b-input-group size="sm">
               <b-input-group-append>
@@ -31,20 +33,30 @@
             </b-input-group>
           </div>
         </div>
-        <!-- <b-card-body>
-          <b-table :fields="fields" :filter="filter" :hover="true" :striped="true" :bordered="true" :small="true" :items="personas" responsive="sm" :busy="loading">
+        <b-card-body>
+          <b-table :fields="fields" :filter="filter" :hover="true" :current-page="currentPage" :per-page="perPage" :bordered="true" :small="true" :items="personas" responsive="sm" :busy="loading">
             <template v-slot:table-busy>
               <div class="text-center text-primary my-2">
                 <b-spinner class="align-middle"></b-spinner>
-                <strong>Loading...</strong>
+                <strong>Cargando...</strong>
               </div>
             </template>
-            <template slot="identificacion" slot-scope="data">
-              {{data.item.cedula}}
+            
+            <template v-slot:cell(acciones)="data">
+              <b-button-group class="text-center">             
+                <b-button variant="outline-danger" size="sm" @click="eliminar(data.item.id )">
+                  <b-icon icon="trash-fill"></b-icon>
+                </b-button>
+                <b-button variant="outline-warning" size="sm" @click="editar(data.item.id)">
+                  <b-icon icon="pencil"></b-icon>                
+                </b-button>
+              </b-button-group>
             </template>
-            <template slot="identificacion" slot-scope="data">{{data.item.cedula}}</template>
           </b-table>
-        </b-card-body> -->
+          <nav>
+              <b-pagination size="sm" :total-rows="personas.length" :per-page="perPage" v-model="currentPage" />
+          </nav>
+        </b-card-body>
       </b-card>
     </div>
 
@@ -197,7 +209,7 @@
               />
             </div>
             <div class="flex justify-end w-full mt-4 mb-4 mr-3">
-              <b-button variant="primary">
+              <b-button variant="primary" type="submit">
                 registrar
               </b-button>
             </div>
@@ -206,14 +218,14 @@
       </form>
     </b-modal>
 
-    <div class="flex justify-center mt-10"> 
+    <!-- <div class="flex justify-center mt-10"> 
       <div class="shadow-md bg-white">
         <div class="flex justify-around mt-4 mx-3">
           <div>
-            <!-- <router-link to="registro-personal" class="bg-blue-500 py-1 px-2 text-white rounded">
+            <router-link to="registro-personal" class="bg-blue-500 py-1 px-2 text-white rounded">
               <span class="icon-add-user"></span>
               nueva persona
-            </router-link>-->
+            </router-link>
           </div>
           <div>
             <h5 class="text-center uppercase font-bold text-lg">registro de personal</h5>
@@ -278,7 +290,7 @@
           <img v-show="loading" src="img/rolling.gif" class="w-20" alt />
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -305,16 +317,18 @@ export default {
       msg: "",
       fecha: "",
       personasRecientes: [],
+      perPage: 10,
+      currentPage: 1,
       recientes: null,
       fields: [
-        {key: 'identificacion', sortable: true, label: 'IDENTIFICACIÓN'},
+        {key: 'cedula', sortable: true, label: 'IDENTIFICACIÓN'},
         {key: 'nombre', sortable: true, label: 'NOMBRE'},
-        {key: 'nacimiento', sortable: true, label: 'NACIMIENTO'},
+        {key: 'fecha_nacimiento', sortable: true, label: 'NACIMIENTO'},
         {key: 'telefono', sortable: true, label: 'TELEFONO'},
         {key: 'direccion', sortable: true, label: 'DIRECCIÓN'},
         {key: 'ciudad', sortable: true, label: 'CIUDAD'},
         {key: 'correo', sortable: true, label: 'CORREO'},
-        {key: 'acciones', sortable: false, label: 'ACCIONES'},
+        {key: 'acciones', sortable: false, label: ''},
       ]
     };
   },
@@ -322,10 +336,10 @@ export default {
     this.mostrarPersonas();
   },
   methods: {
-    mostrarPersonas: function () {
+    mostrarPersonas() {
       this.loading = true;
       axios.get(keys.baseUrl + "fecth-personal").then((response) => {
-        this.personas = response.data;
+        this.personas = response.data;                
         this.loading = false;
       });
     },
@@ -349,21 +363,19 @@ export default {
           }
         });
     },
-    eliminar: function (id) {
+    eliminar(id) {
       var confirmar = confirm("¿Está seguro de realizar esta acción?");
       if (confirmar)
         axios
           .delete(keys.baseUrl + `eliminar-persona/${id}`)
           .then((response) => response.data)
-          .then((resp) => {
-            // eslint-disable-next-line no-console
-            console.log(resp);
+          .then((resp) => {                        
             if (!resp.error) {
               this.mostrarPersonas();
             }
           });
     },
-    editar: function (id) {
+    editar(id) {
       this.$router.push({
         name: "editar-personal",
         params: {

@@ -1,15 +1,22 @@
 <template>
   <div id="login">
-    <div class="content-login">
-      <section class="mb-2">
+    <div class="content-login">      
+      <div class="text-center mb-2">
+        <b-avatar size="72px">
+          <img src="img/logo1.png" alt />
+        </b-avatar>
+      </div>
+      <div class="border-teal bg-white p-3 border-t-12 mb-6 rounded-lg shadow-md" id="login-content">
+        <div>{{ (is_auth) ? redireccionar() : '' }}</div>
+        <section class="mb-2">
         <div
           v-if="is_auth == false"
-          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-lg"
+          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md"
         >
           <strong class="block font-bold">Ocurrió un error!</strong>
           <span class="block sm:inline">por favor verfique sus datos.</span>
         </div>
-        <div>{{ (is_auth) ? redirec() : '' }}</div>
+        
         <div
           v-if="is_auth"
           class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative shadow-md"
@@ -18,15 +25,9 @@
           <span class="block sm:inline">en un momento será redireccíonado.</span>
         </div>
       </section>
-      <div class="border-teal bg-white p-8 border-t-12 mb-6 rounded-lg shadow-lg">
-        
-        <div class="text-center">
-          <!-- <b-icon icon="person-fill" font-scale="4"></b-icon> -->
-          <b-avatar size="72px"></b-avatar>
-        </div>
         <form v-on:submit.prevent="enviar($event)">
           <b-form-group>
-            <label for="usuario">Usuario</label>
+            <label for="usuario">Usuario:</label>
             <b-input
               type="text"
               id="usuario"
@@ -36,7 +37,7 @@
             />
           </b-form-group>
           <b-form-group>
-            <label for="password">Contraseña</label>
+            <label for="password">Contraseña:</label>
             <b-input
               type="password"
               id="password"
@@ -53,16 +54,7 @@
             >¿Olvidaste tu contraseña?</a>
           </div>
         </form>
-      </div>
-      <div class="text-center">
-        <p class="text-grey-dark text-sm">
-          Aun no tines una cuenta?
-          <a
-            href="#"
-            class="no-underline text-blue font-bold"
-          >Create an Account</a>.
-        </p>
-      </div>
+      </div>      
     </div>
   </div>
 </template>
@@ -89,15 +81,12 @@ export default {
   methods: {
     enviar: async function () {
       await this.$store.commit("login", this.datos);
-      // eslint-disable-next-line no-console
-      // this.is_auth = await this.$store.state.is_auth;
-      // this.$router.push("/menu");
     },
-    redirec(){
+    redireccionar() {
       setTimeout(() => {
         this.$router.push("/menu");
       }, 3000);
-    }
+    },
   },
 };
 </script>
@@ -110,12 +99,10 @@ export default {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  -webkit-transform: translate(-60%, -60%);
+  -webkit-transform: translate(-50%, -50%); 
+  
 }
-.coc {
-  min-width: 19rem;
-}
-section {
-  min-height: 5rem;  
+#login-content {
+  min-width: 22rem;
 }
 </style>

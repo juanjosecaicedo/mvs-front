@@ -13,6 +13,7 @@ export default new Vuex.Store({
   },
   mutations: {
     async login(state, user){
+      state.is_auth = null;
       await axios.post(`${keys.baseUrl}login`,user).then(response => {
         state.usuarios = response.data;
         if(response.data.id){
