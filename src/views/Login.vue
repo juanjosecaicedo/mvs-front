@@ -23,7 +23,7 @@
         >
           <strong class="block font-bold">Datos correctos!</strong>
           <span class="block sm:inline">en un momento será redireccíonado.</span>
-        </div>
+        </div>        
       </section>
         <form v-on:submit.prevent="enviar($event)">
           <b-form-group>
@@ -46,7 +46,15 @@
               required
             />
           </b-form-group>
-          <b-button variant="primary" class="btn-block" type="submit">Ingresar</b-button>
+          <div class="d-flex">
+          <b-button variant="primary" class="btn-block" :disabled="loading || redirecting" type="submit">
+            <span v-if="!redirecting">Ingresar</span>
+            <b-spinner v-if="loading || redirecting" small>
+              <strong>Cargando...</strong>
+            </b-spinner>
+          </b-button>
+          <!-- <b-spinner  v-if="loading" variant="primary"></b-spinner> -->
+        </div>
           <div class="mt-2">
             <a
               class="no-underline inline-block align-baseline font-bold text-sm text-blue hover:text-blue-dark"
@@ -65,6 +73,9 @@ export default {
     is_auth() {
       return this.$store.state.is_auth;
     },
+    loading(){
+      return this.$store.state.loading;
+    }    
   },
 
   data() {
@@ -75,6 +86,7 @@ export default {
       },
       respues: {},
       year: new Date().getFullYear(),
+      redirecting: false
     };
   },
 
@@ -83,8 +95,10 @@ export default {
       await this.$store.commit("login", this.datos);
     },
     redireccionar() {
+      this.redirecting = true;
       setTimeout(() => {
         this.$router.push("/menu");
+        this.redirecting = false;
       }, 3000);
     },
   },
@@ -99,8 +113,7 @@ export default {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%); 
-  
+  -webkit-transform: translate(-50%, -50%);  
 }
 #login-content {
   min-width: 22rem;

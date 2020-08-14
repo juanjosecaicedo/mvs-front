@@ -45,7 +45,7 @@
           >Diezmos</router-link>
 
           <router-link
-            to="ofrendas-harts"
+            to="ofrendas-charts"
             class="inline-block text-center bg-gray-200 rounded-full px-3 py-2 text-sm font-semibold text-gray-700 mr-2 my-1 hover:bg-blue-500 hover:text-gray-100 hover:shadow-md"
           >Ofrendas</router-link>
           <router-link

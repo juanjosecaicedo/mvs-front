@@ -5,21 +5,12 @@ import EditarPersonal from '../components/EditarPersonal'
 
 Vue.use(Router);
 
-
-var nameIndexRoute = 'menu';
-var componentIndexRoute = () => import('../views/Menu');
-
-if(localStorage.getItem('session') == null){    
-  nameIndexRoute = 'login';
-  componentIndexRoute = () => import('../views/Login');
-}
-
 let router = new Router({
   mode: 'history',
   routes: [{
       path: '/',
-      name: nameIndexRoute,
-      component: componentIndexRoute,
+      name: 'welcome',
+      component: () => import('../views/Welcome'),
     },
     {
       path: '/login',
@@ -101,6 +92,25 @@ let router = new Router({
         requires_auth: true,
         title: 'eventos'
       },
+    },
+    {
+      path: '/diezmos-charts',
+      name: 'diezmos-charts',
+      component: () => import('../views/DiezmosChart')
+    },
+    {
+      path: '/ofrendas-charts',
+      name: 'ofrendas-charts',
+      component: () => import('../views/OfrendasCharts')
+    },
+    {
+      path: '/protemplo-charts',
+      name: 'protemplo-charts',
+      component: () => import('../views/ProtemploCharts')
+    },
+    {
+      path: '*',      
+      component: () => import('../views/Page404')
     }
   ]
 });

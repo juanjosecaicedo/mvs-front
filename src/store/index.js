@@ -9,18 +9,24 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     usuarios: {},
-    is_auth: null
+    is_auth: null,
+    loading: false
   },
   mutations: {
     async login(state, user){
+      state.loading = true;
       state.is_auth = null;
       await axios.post(`${keys.baseUrl}login`,user).then(response => {
         state.usuarios = response.data;
         if(response.data.id){
           localStorage.setItem('session', JSON.stringify(state.usuarios));
           state.is_auth = true;
+          state.loading = false;
         }else {
           state.is_auth = false;
+          setTimeout(() => {
+            state.loading = false;  
+          }, 3000);
         }
       })
     },
