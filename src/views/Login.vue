@@ -30,7 +30,7 @@
             <toast
               messagge="en un momento será redireccíonado."
               title="Datos correctos!"
-              type="danger"
+              type="success"
             />
           </div>
         </section>
