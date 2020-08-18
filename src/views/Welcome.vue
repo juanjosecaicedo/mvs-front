@@ -25,7 +25,8 @@
                 <hr />
                 <p
                   class="text-white"
-                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus non rem deserunt natus tempora quasi saepe fugiat doloremque porro enim.</p>
+                >Dejad crecer juntamente lo uno y lo otro hasta la siega; y al tiempo de la siega yo diré a los segadores: Recoged primero la cizaña, y atadla en manojos para quemarla; pero recoged el trigo en mi granero.</p>
+                <p class="text-white">S. Mateo 13:30</p>
                 <div>
                   <b-button pill class="px-4" @click="pageFacebook()" variant="outline-light">pagina en facebook</b-button>
                 </div>
