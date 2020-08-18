@@ -13,25 +13,23 @@
         <div>{{ (is_auth) ? redireccionar() : '' }}</div>
         <section class="mb-2">
           <div
-            v-if="is_auth == false"
-            class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md"
+            v-if="is_auth == false"            
           >
             <toast
               messagge="por favor verfique sus datos."
               title="Ocurrió un error!"
               type="danger"
-            />
+            ></toast>
           </div>
 
           <div
-            v-if="is_auth"
-            class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative shadow-md"
+            v-if="is_auth"            
           >
             <toast
               messagge="en un momento será redireccíonado."
               title="Datos correctos!"
               type="success"
-            />
+            ></toast>
           </div>
         </section>
         <form v-on:submit.prevent="enviar($event)">

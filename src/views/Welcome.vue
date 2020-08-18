@@ -27,7 +27,7 @@
                   class="text-white"
                 >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus non rem deserunt natus tempora quasi saepe fugiat doloremque porro enim.</p>
                 <div>
-                  <b-button pill class="px-4" variant="outline-light">pagina en facebook</b-button>
+                  <b-button pill class="px-4" @click="pageFacebook()" variant="outline-light">pagina en facebook</b-button>
                 </div>
               </div>
               <div class="col-md-6 px-0 flex justify-end">
@@ -105,29 +105,61 @@
           </div>
         </div>
       </section>
-      <section class="container">        
+      <section class="container mb-5">        
         <hooper group="group1"
+          
           :autoPlay="true"
           :infiniteScroll="true"
-          :playSpeed="2000"
+          :playSpeed="3000"
+          style="height: 500px"
         >
-          <slide>slide 1</slide>
-          <slide>slide 2</slide>
-          <slide>slide 3</slide>
-          <slide>slide 4</slide>
-          <slide>slide 5</slide>
-          <slide>slide 6</slide>          
-          <Navigation slot="hooper-addons"></Navigation>
-          <Progress slot="hooper-addons"></Progress>
+          <slide>
+            <img class="object-contain h-full w-full" src="../assets/images/IGLESIA M.V.S CALI on Instagram_ _Mis labios siemp(JPG).jpg" alt="">
+          </slide>
+          <slide>
+            <img class="object-contain  h-full w-full" src="../assets/images/IGLESIA M.V.S CALI on Instagram_ __porpoco _salvac(JPG).jpg" alt="">
+          </slide>
+          <slide>
+            <img class="object-contain  h-full w-full" src="../assets/images/IGLESIA M.V.S CALI on Instagram_ _Somos uno en Jes(JPG).jpg" alt="">
+          </slide>
+          <slide>
+            <img class="object-contain  h-full w-full" src="../assets/images/IGLESIA M.V.S CALI on Instagram_ _En nuestra serie(JPG).jpg" alt="">
+          </slide>
+          <slide>
+            <img class="object-contain  h-full w-full" src="../assets/images/Instagram post by IGLESIA M.V.S CALI_Bwx0XhslNCw(JPG).jpg" alt="">
+          </slide>
+          <slide>
+            <img class="object-contain  h-full w-full" src="../assets/images/IGLESIA M.V.S CALI on Instagram_ _1 Timoteo_4-16__(JPG).jpg" alt="">  
+          </slide>          
+          <!-- <Navigation slot="hooper-addons"></Navigation> -->
+          <!-- <Progress slot="hooper-addons"></Progress> -->
         </hooper>
 
-        <hooper group="group1" :itemsToShow="3" :centerMode="true">
-          <slide>slide sub 1</slide>
-          <slide>slide sub 2</slide>
-          <slide>slide sub 3</slide>
-          <slide>slide sub 4</slide>
-          <slide>slide sub 5</slide>
-          <slide>slide sub 6</slide>
+        <hooper group="group1" :itemsToShow="5" :centerMode="true">
+          <slide>
+            <img class="object-contain h-full w-full" src="../assets/images/IGLESIA M.V.S CALI on Instagram_ _Mis labios siemp(JPG).jpg" alt="">
+          </slide>
+          <slide>
+            <img class="object-contain  h-full w-full" src="../assets/images/IGLESIA M.V.S CALI on Instagram_ __porpoco _salvac(JPG).jpg" alt="">
+          </slide>
+          <slide>
+            <img class="object-contain  h-full w-full" src="../assets/images/IGLESIA M.V.S CALI on Instagram_ _Somos uno en Jes(JPG).jpg" alt="">
+          </slide>
+          <slide>
+            <img class="object-contain  h-full w-full" src="../assets/images/IGLESIA M.V.S CALI on Instagram_ _En nuestra serie(JPG).jpg" alt="">
+          </slide>
+          <slide>
+            <img class="object-contain  h-full w-full" src="../assets/images/Instagram post by IGLESIA M.V.S CALI_Bwx0XhslNCw(JPG).jpg" alt="">
+          </slide>
+          <slide>
+            <img class="object-contain  h-full w-full" src="../assets/images/IGLESIA M.V.S CALI on Instagram_ _1 Timoteo_4-16__(JPG).jpg" alt="">  
+          </slide>
+          <slide>
+            <img class="object-contain  h-full w-full" src="../assets/images/Instagram post by IGLESIA M.V.S CALI_BxQ71Y7ghNB(JPG).jpg" alt="">  
+          </slide>
+          <slide>
+            <img class="object-contain  h-full w-full" src="../assets/images/Instagram post by IGLESIA M.V.S CALI_BwqOFyPBrWH(JPG).jpg" alt="">  
+          </slide> 
 
           <Navigation slot="hooper-addons"></Navigation>
           <Pagination slot="hooper-addons"></Pagination>
@@ -158,6 +190,7 @@ export default {
     Slide,
     Navigation,
     Pagination,
+    // eslint-disable-next-line vue/no-unused-components
     Progress
   },
   mounted() {
@@ -169,7 +202,9 @@ export default {
     };
   },
   methods: {
-    pageFacebook() {},
+    pageFacebook() {
+      window.open('https://www.facebook.com/iglesiamisionvidasegadorescali/', '_blank')
+    },
   },
 };
 </script>

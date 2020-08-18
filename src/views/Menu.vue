@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar />
-    <div class="flex justify-around mt-10">
+    <div class="flex flex-wrap justify-around mt-10">
       <div class="bg-gray-100 w-64 rounded overflow-hidden shadow-lg hover:shadow-md">
         <div class="flex justify-center">
           <div class="mt-10">

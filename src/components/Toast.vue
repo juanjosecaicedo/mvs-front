@@ -1,6 +1,10 @@
+<template>
+  <div></div>
+</template>
 
 <script>
 export default {
+  name: 'Toast',
   props: {
     messagge:  {
       type: String,
@@ -25,7 +29,7 @@ export default {
   },
   methods: {
     makeToast(){
-      this.toastCount++
+      this.toastCount++;
       this.$bvToast.toast(this.messagge, {
         title: this.title,
         variant: this.type,
@@ -36,6 +40,3 @@ export default {
   }
 };
 </script>
-
-<style>
-</style>

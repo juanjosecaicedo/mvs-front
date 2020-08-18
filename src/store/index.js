@@ -13,40 +13,36 @@ export default new Vuex.Store({
     loading: false
   },
   mutations: {
-    async login(state, user){
+    async login(state, user) {
       state.loading = true;
       state.is_auth = null;
-      await axios.post(`${keys.baseUrl}login`,user).then(response => {
+      await axios.post(`${keys.baseUrl}login`, user).then(response => {
         state.usuarios = response.data;
-        if(response.data.id){
+        if (response.data.id) {
           localStorage.setItem('session', JSON.stringify(state.usuarios));
           state.is_auth = true;
           state.loading = false;
-        }else {
+        } else {
           state.is_auth = false;
-          setTimeout(() => {
-            state.loading = false;  
-          }, 3000);
+          state.loading = false;
         }
       })
     },
-    checkAuth(state, user){
+    checkAuth(state, user) {
       state.usuarios = user;
-      if(user.id){
+      if (user.id) {
         state.is_auth = true;
       }
     },
-    cerrarSesion(state, user){
+    cerrarSesion(state, user) {
       state.usuarios = user,
-      state.is_auth = null;
-      if(localStorage.getItem('session')){        
+        state.is_auth = null;
+      if (localStorage.getItem('session')) {
         localStorage.removeItem('session');
       }
     }
   },
-  actions: {
-   
-  },
+  actions: {},
 
   modules: {}
 })
