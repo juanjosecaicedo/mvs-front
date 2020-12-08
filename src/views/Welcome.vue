@@ -106,7 +106,29 @@
           </div>
         </div>
       </section>
-      <section class="container mb-5">        
+      <div class="bg-white">
+
+      
+      <section class="container bg-white my-3">
+        <div class="grid grid-cols-2 gap-0 items-center">
+          <div class="col-span-1 text-center">
+            <h2 class="tracking-wide">MISIÓN</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio natus recusandae iusto velit! Dolor eligendi, vitae necessitatibus vel odio quisquam. Assumenda mollitia sequi nesciunt iusto nobis amet, praesentium officia eligendi!</p>
+          </div>
+          <div class="col-span-1">
+            <img src="../assets/images/undraw_mission_impossible_bwa2.png" style="width: 100%; height: 30rem;" alt="">
+          </div>
+          <div class="col-span-1">
+            <img src="../assets/images/undraw_shared_goals_3d12.png" alt="">
+          </div>
+          <div class="col-span-1 text-center">
+            <h2 class="tracking-wide ">VISIÓN</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat fugit repellat quidem commodi. Rem odit iste, voluptatum molestias molestiae minima! Adipisci maxime voluptates repellendus corporis reprehenderit deserunt ea facilis quas?</p>
+          </div>
+        </div>
+      </section>
+      </div>
+      <section class="container mb-3">        
         <hooper group="group1"
           
           :autoPlay="true"
@@ -166,6 +188,50 @@
           <Pagination slot="hooper-addons"></Pagination>
         </hooper>
       </section>
+      <div class="bg-white py-4">
+          <h3 class="text-center uppercase">contáctenos</h3>
+          <div class="container">
+
+          
+          <div class="grid grid-cols-2 mt-5">
+            <div class="col-span-1">
+              <h5 class="text-center mb-4">Informacion de contacto</h5>
+              <ul>
+                <li>Dirección: <span class="text-gray-700">Cl 95e #4-33</span></li>
+                <li class="mt-3">Barrio: <span class="text-gray-700">Cordoba</span></li>
+                <li class="mt-3">Ciudad: <span class="text-gray-700">Cali (Valle del cauca) Colombia</span></li>
+                <li class="mt-3">Correo: <span class="text-gray-700">contacto@misionvida.com</span></li>
+                <li class="mt-3">Telefono: <span class="text-gray-700">+57 323-422-5577</span></li>
+              </ul>
+            </div>
+            <div class="col-span-1">
+              <div class="card-contacto border p-3">
+              <h5 class="text-center mb-4">Envianos un mensaje</h5>
+              <form action="" method="POST">
+                <div class="mb-5">
+                  <label for="nombre" class="text-gray-700">Nombre</label>
+                  <input type="text" name="" class="appearance-none relative block w-full px-2 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-500 focus:z-10 sm:text-sm sm:leading-5" id="nombre">
+                </div>
+                <div class="mb-5">
+                  <label for="correo" class="text-gray-700">Correo</label>
+                  <input type="email" name="" class="appearance-none relative block w-full px-2 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-500 focus:z-10 sm:text-sm sm:leading-5" id="correo">
+                </div>
+                <div>
+                  <label for="mensaje" class="text-gray-700">Mensaje</label>
+                  <textarea name="" id="mensaje" class="appearance-none relative block w-full px-2 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-500 focus:z-10 sm:text-sm sm:leading-5" placeholder="Dejanos una mensaje"></textarea>
+                </div>
+                <button type="button" class="group relative w-full flex justify-center py-3 px-4 my-2 border border-transparent text-sm font-bold rounded-md text-white bg-blue-600 to-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      <span class="absolute left-0 inset-y-0 flex items-center pl-3">                      
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                      </span>
+                          Enviar
+                  </button>
+              </form>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
     </main>
     <footer>
       <div class="py-5 content-footer"></div>
@@ -229,6 +295,9 @@ footer .content-footer {
 }
 .social div a {
   text-decoration: none;
+}
+.card-contacto {
+  max-width: 25rem;
 }
 </style>
 
