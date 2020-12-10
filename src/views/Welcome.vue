@@ -6,6 +6,9 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav v class="ml-auto items-center">
+          <b-nav-item @click="$router.push('/')">
+              <span class="mr-2">Nosotros</span>            
+          </b-nav-item>
           <b-nav-item @click="$router.push('/login')">
             <b-button pill class="px-4 items-center" variant="outline-primary">
               <span class="mr-2">PORTAL</span> 
